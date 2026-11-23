@@ -1,0 +1,32 @@
+import pandas as pd
+import matplotlib.pyplot as plt 
+# Arath Valenzuela 
+
+df_food_india = pd.read_csv('indian_food.csv')
+print("\n-----+ DATOS LEIDOS DESDE EL CSV: comida india (0148) +-----")
+print(df_food_india)
+print("\n-----+ Mostrar nombre de la comida + ingredientes (0148) +-----")
+recetas = df_food_india[['name', 'ingredients']]
+print(recetas)
+print("\n-----+ Tiempo de coccion: mostrar primeros 10 registros con head (0148) +-----")
+nombre_y_hora = df_food_india[['name', 'cook_time']].head(10)
+print(nombre_y_hora)
+print("\n-----+ Grafica de comida-(X) Tiempo de cocinado-(Y) (0148) +-----")
+print("\n-----+ Grafica de comida (X) Texto a 30 grados (0148) +-----")
+nombre_y_hora.plot.bar(x='name',y='cook_time', rot=30)
+plt.title('Comida tipica de india por Arath 0148')
+plt.xlabel('Nombre platillo')
+plt.ylabel('tiempo de cocinado')
+plt.show()
+nombre_y_hora_prep = df_food_india[['name', 'prep_time', 'cook_time']].head(10)
+nombre_y_hora_prep.plot.bar(x='name', rot=30)
+plt.title('Comida tipica de india por Arath 0148 (Grafica de Varias Columnas)')
+plt.xlabel('Nombre platillo')
+plt.ylabel('tiempo de cocinado prep')
+plt.show()
+print("\n-----+ Grafica de barras apiladas una tras otra aplilada verticalmente (0148) +-----")
+nombre_y_hora_prep.plot.bar(x='name', stacked=True)
+plt.title('Comida tipica de india (Apilada) por Arath 0148')
+plt.xlabel('Nombre platillo')
+plt.ylabel('tiempo de cocinado')
+plt.show()
